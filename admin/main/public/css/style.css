@@ -1,0 +1,88 @@
+/* =========================================
+   GLOBAL
+========================================= */
+
+* {
+
+    margin: 0;
+
+    padding: 0;
+
+    box-sizing: border-box;
+
+}
+
+
+html,
+body {
+
+    width: 100%;
+
+    min-height: 100%;
+
+}
+
+
+body {
+
+    background: #f4f6f9;
+
+    font-family: Arial, Helvetica, sans-serif;
+
+    font-size: 14px;
+
+}
+
+
+.sidebar .nav-link.active {
+    background-color: rgba(255, 255, 255, 0.2);
+    color: #fff;
+    border-radius: 8px;
+}
+
+/* =========================================
+   MAIN
+========================================= */
+
+.main {
+
+    margin-left: 260px;
+
+    min-height: 100vh;
+
+}
+
+
+/* =========================================
+   CONTENT
+========================================= */
+
+#content {
+
+    width: 100%;
+
+    padding: 25px;
+
+}
+
+
+/* =========================================
+   MOBILE
+========================================= */
+
+@media (max-width: 767.98px) {
+
+    .main {
+
+        margin-left: 0;
+
+    }
+
+
+    #content {
+
+        padding: 15px;
+
+    }
+
+}

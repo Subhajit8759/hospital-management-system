@@ -1,0 +1,136 @@
+<div class="dropdown">
+
+                <a href="#" class="d-flex align-items-center text-decoration-none dropdown-toggle user-dropdown"
+                    data-bs-toggle="dropdown" aria-expanded="false">
+
+                    <img src="https://i.pravatar.cc/100" width="45" height="45"
+                        class="rounded-circle border border-2 border-primary" alt="Profile">
+
+
+                    <div class="ms-2 user-info">
+
+                        <strong class="text-dark d-block">
+                            Admin
+                        </strong>
+
+                        <small class="text-muted">
+                            <?php echo $_SESSION['name']; ?>
+                        </small>
+
+                    </div>
+
+                </a>
+
+
+                <!-- =========================
+                     User Dropdown Menu
+                ========================== -->
+
+                <ul class="dropdown-menu dropdown-menu-end shadow-lg border-0 rounded-4 user-dropdown-menu">
+
+
+                    <!-- Profile Header -->
+
+                    <li class="text-center p-4">
+
+                        <img src="https://i.pravatar.cc/120" class="rounded-circle border border-3 border-primary"
+                            width="80" height="80" alt="Profile">
+
+                        <h5 class="mt-3 mb-1">
+                            Admin
+                        </h5>
+
+                        <small class="text-muted">
+                            <?php echo $_SESSION['name']; ?>
+                        </small>
+
+                    </li>
+
+
+                    <li>
+                        <hr class="dropdown-divider">
+                    </li>
+
+
+                    <!-- My Profile -->
+
+                    <li>
+
+                        <a class="dropdown-item py-2" href="#">
+
+                            <i class="bi bi-person me-2"></i>
+
+                            My Profile
+
+                        </a>
+
+                    </li>
+
+
+                    <!-- Change Password -->
+
+                    <li>
+
+                        <a class="dropdown-item py-2" href="#">
+
+                            <i class="bi bi-key me-2"></i>
+
+                            Change Password
+
+                        </a>
+
+                    </li>
+
+
+                    <!-- Notifications -->
+
+                    <li>
+
+                        <a class="dropdown-item py-2" href="#">
+
+                            <i class="bi bi-bell me-2"></i>
+
+                            Notifications
+
+                        </a>
+
+                    </li>
+
+
+                    <!-- Settings -->
+
+                    <li>
+
+                        <a class="dropdown-item py-2" href="#">
+
+                            <i class="bi bi-gear me-2"></i>
+
+                            Settings
+
+                        </a>
+
+                    </li>
+
+
+                    <li>
+                        <hr class="dropdown-divider">
+                    </li>
+
+
+                    <!-- Logout -->
+
+                    <li>
+
+                        <a class="dropdown-item text-danger py-2" href="#">
+
+                            <i class="bi bi-box-arrow-right me-2"></i>
+
+                            Logout
+
+                        </a>
+
+                    </li>
+
+                </ul>
+
+            </div>

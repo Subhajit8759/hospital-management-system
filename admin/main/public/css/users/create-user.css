@@ -1,0 +1,352 @@
+/* =========================================
+   CREATE USER PAGE
+========================================= */
+
+.create-user-page {
+    padding: 0 15px 30px;
+}
+
+
+/* =========================================
+   MAIN CARD
+========================================= */
+
+.create-user-card {
+    border-radius: 12px;
+    overflow: hidden;
+    background: #ffffff;
+}
+
+
+/* =========================================
+   HEADER
+========================================= */
+
+.create-user-header {
+    min-height: 75px;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    padding: 15px 20px;
+
+    border-bottom: 1px solid #e9ecef;
+}
+
+
+.create-user-title {
+    margin: 0;
+
+    font-size: 21px;
+    font-weight: 600;
+
+    color: #212529;
+}
+
+
+.create-user-title i {
+    color: #0d6efd;
+}
+
+
+/* Back Button */
+
+.back-btn {
+    min-width: 90px;
+    border-radius: 7px;
+    font-weight: 500;
+}
+
+
+/* =========================================
+   FORM BODY
+========================================= */
+
+.create-user-body {
+    padding: 25px;
+}
+
+
+/* =========================================
+   FORM LABEL
+========================================= */
+
+.create-user-form .form-label {
+    font-size: 14px;
+    font-weight: 600;
+    color: #343a40;
+
+    margin-bottom: 7px;
+}
+
+
+/* Required Star */
+
+.create-user-form .text-danger {
+    font-weight: 600;
+}
+
+
+/* =========================================
+   INPUT / SELECT / TEXTAREA
+========================================= */
+
+.create-user-form .form-control,
+.create-user-form .form-select {
+    min-height: 42px;
+
+    border: 1px solid #ced4da;
+    border-radius: 7px;
+
+    font-size: 14px;
+
+    padding: 9px 12px;
+
+    transition: all 0.2s ease;
+}
+
+
+/* Textarea */
+
+.create-user-form textarea.form-control {
+    min-height: 100px;
+    resize: vertical;
+}
+
+
+/* Focus */
+
+.create-user-form .form-control:focus,
+.create-user-form .form-select:focus {
+
+    border-color: #86b7fe;
+
+    box-shadow: 0 0 0 0.20rem rgba(13, 110, 253, 0.12);
+}
+
+
+/* Placeholder */
+
+.create-user-form .form-control::placeholder {
+    color: #adb5bd;
+    font-size: 13px;
+}
+
+
+/* =========================================
+   FILE INPUT
+========================================= */
+
+.create-user-form input[type="file"] {
+    padding: 7px 10px;
+    cursor: pointer;
+}
+
+
+/* =========================================
+   VALIDATION
+========================================= */
+
+.create-user-form label.error {
+    display: block;
+
+    margin-top: 5px;
+
+    color: #dc3545;
+
+    font-size: 12px;
+    font-weight: 500;
+}
+
+
+.create-user-form .form-control.error,
+.create-user-form .form-select.error {
+    border-color: #dc3545;
+}
+
+
+.create-user-form .form-control.error:focus,
+.create-user-form .form-select.error:focus {
+    border-color: #dc3545;
+
+    box-shadow: 0 0 0 0.20rem rgba(220, 53, 69, 0.10);
+}
+
+
+/* Valid */
+
+.create-user-form .form-control.valid,
+.create-user-form .form-select.valid {
+    border-color: #198754;
+}
+
+
+/* =========================================
+   BUTTON AREA
+========================================= */
+
+.create-user-buttons {
+    margin-top: 25px;
+
+    padding-top: 20px;
+
+    border-top: 1px solid #e9ecef;
+}
+
+
+.create-user-buttons .btn {
+    min-width: 110px;
+
+    border-radius: 7px;
+
+    font-size: 14px;
+    font-weight: 500;
+}
+
+
+/* =========================================
+   TABLET
+========================================= */
+
+@media (max-width: 991.98px) {
+
+    .create-user-page {
+        padding: 0 10px 25px;
+    }
+
+    .create-user-body {
+        padding: 20px;
+    }
+
+    .create-user-header {
+        padding: 15px;
+    }
+
+    .create-user-title {
+        font-size: 19px;
+    }
+
+}
+
+
+/* =========================================
+   MOBILE
+========================================= */
+
+@media (max-width: 767.98px) {
+
+    .create-user-page {
+        padding: 0 8px 20px;
+    }
+
+
+    /* Header */
+
+    .create-user-header {
+        flex-direction: column;
+
+        align-items: flex-start;
+
+        gap: 15px;
+
+        padding: 15px;
+    }
+
+
+    .create-user-title {
+        font-size: 18px;
+    }
+
+
+    .back-btn {
+        width: 100%;
+    }
+
+
+    /* Body */
+
+    .create-user-body {
+        padding: 15px;
+    }
+
+
+    /* Form */
+
+    .create-user-form .form-label {
+        font-size: 13px;
+    }
+
+
+    .create-user-form .form-control,
+    .create-user-form .form-select {
+        min-height: 40px;
+        font-size: 14px;
+    }
+
+
+    /* Buttons */
+
+    .create-user-buttons {
+        display: flex;
+        flex-direction: column;
+        gap: 8px;
+    }
+
+
+    .create-user-buttons .btn {
+        width: 100%;
+        margin-left: 0 !important;
+    }
+
+}
+
+
+/* =========================================
+   SMALL MOBILE
+========================================= */
+
+@media (max-width: 575.98px) {
+
+    .create-user-page {
+        margin-top: 10px !important;
+        padding: 0 5px 15px;
+    }
+
+
+    .create-user-card {
+        border-radius: 8px;
+    }
+
+
+    .create-user-header {
+        padding: 13px;
+    }
+
+
+    .create-user-body {
+        padding: 13px;
+    }
+
+
+    .create-user-title {
+        font-size: 17px;
+    }
+
+
+    .create-user-title i {
+        margin-right: 5px !important;
+    }
+
+
+    .create-user-form .form-control,
+    .create-user-form .form-select {
+        min-height: 40px;
+    }
+
+
+    .create-user-form textarea.form-control {
+        min-height: 90px;
+    }
+
+}

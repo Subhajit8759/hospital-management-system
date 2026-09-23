@@ -1,0 +1,331 @@
+.dashboard-container {
+    padding: 20px;
+}
+
+
+/* =========================
+   Dashboard Header
+========================= */
+
+.dashboard-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    margin-bottom: 20px;
+}
+
+.dashboard-header h4 {
+    font-size: 22px;
+    color: #212529;
+}
+
+.dashboard-header p {
+    font-size: 13px;
+}
+
+.dashboard-date {
+    background: #ffffff;
+
+    padding: 8px 14px;
+
+    border-radius: 8px;
+
+    font-size: 13px;
+
+    color: #6c757d;
+
+    box-shadow: 0 2px 8px rgba(0, 0, 0, .05);
+}
+
+
+/* =========================
+   Dashboard Card
+========================= */
+
+.dashboard-card {
+    position: relative;
+
+    min-height: 115px;
+
+    padding: 15px;
+
+    border-radius: 10px;
+
+    display: flex;
+    align-items: center;
+
+    text-decoration: none;
+
+    color: #212529;
+
+    overflow: hidden;
+
+    transition: .25s ease;
+
+    border: 1px solid rgba(0, 0, 0, .05);
+
+    box-shadow: 0 2px 8px rgba(0, 0, 0, .05);
+}
+
+
+/* Hover */
+
+.dashboard-card:hover {
+    transform: translateY(-4px);
+
+    box-shadow: 0 7px 18px rgba(0, 0, 0, .12);
+
+    color: #212529;
+}
+
+
+/* =========================
+   Icon
+========================= */
+
+.card-icon {
+    width: 48px;
+    height: 48px;
+
+    flex-shrink: 0;
+
+    border-radius: 10px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    color: #ffffff;
+}
+
+.card-icon i {
+    font-size: 22px;
+}
+
+
+/* =========================
+   Content
+========================= */
+
+.card-content {
+    margin-left: 12px;
+
+    padding-right: 12px;
+}
+
+.card-content h6 {
+    margin: 0 0 4px;
+
+    font-size: 14px;
+
+    font-weight: 600;
+}
+
+.card-content small {
+    font-size: 11px;
+
+    color: #6c757d;
+}
+
+
+/* =========================
+   Arrow
+========================= */
+
+.card-arrow {
+    position: absolute;
+
+    right: 12px;
+    bottom: 12px;
+
+    font-size: 12px;
+
+    color: #adb5bd;
+}
+
+
+/* =========================
+   Card Colors
+========================= */
+
+.card-blue {
+    background: #eef5ff;
+}
+
+.card-blue .card-icon {
+    background: #0d6efd;
+}
+
+
+.card-green {
+    background: #edf9f1;
+}
+
+.card-green .card-icon {
+    background: #198754;
+}
+
+
+.card-cyan {
+    background: #eafaff;
+}
+
+.card-cyan .card-icon {
+    background: #0dcaf0;
+}
+
+
+.card-orange {
+    background: #fff5e8;
+}
+
+.card-orange .card-icon {
+    background: #fd7e14;
+}
+
+
+.card-red {
+    background: #fff0f1;
+}
+
+.card-red .card-icon {
+    background: #dc3545;
+}
+
+
+.card-purple {
+    background: #f4efff;
+}
+
+.card-purple .card-icon {
+    background: #6f42c1;
+}
+
+
+.card-pink {
+    background: #fff0f6;
+}
+
+.card-pink .card-icon {
+    background: #d63384;
+}
+
+
+.card-teal {
+    background: #eafaf7;
+}
+
+.card-teal .card-icon {
+    background: #20c997;
+}
+
+
+.card-yellow {
+    background: #fffbea;
+}
+
+.card-yellow .card-icon {
+    background: #ffc107;
+}
+
+
+.card-indigo {
+    background: #f0f0ff;
+}
+
+.card-indigo .card-icon {
+    background: #6610f2;
+}
+
+
+.card-dark {
+    background: #f1f3f5;
+}
+
+.card-dark .card-icon {
+    background: #212529;
+}
+
+
+.card-gray {
+    background: #f5f5f5;
+}
+
+.card-gray .card-icon {
+    background: #6c757d;
+}
+
+
+/* =========================
+   Tablet
+========================= */
+
+@media (max-width: 991.98px) {
+
+    .dashboard-container {
+        padding: 15px;
+    }
+
+    .dashboard-card {
+        min-height: 105px;
+    }
+
+}
+
+
+/* =========================
+   Mobile
+========================= */
+
+@media (max-width: 575.98px) {
+
+    .dashboard-container {
+        padding: 12px;
+    }
+
+    .dashboard-header {
+        margin-bottom: 15px;
+    }
+
+    .dashboard-header h4 {
+        font-size: 19px;
+    }
+
+    .dashboard-date {
+        display: none;
+    }
+
+    .dashboard-card {
+        min-height: 100px;
+
+        padding: 12px;
+    }
+
+    .card-icon {
+        width: 42px;
+        height: 42px;
+    }
+
+    .card-icon i {
+        font-size: 19px;
+    }
+
+    .card-content {
+        margin-left: 9px;
+    }
+
+    .card-content h6 {
+        font-size: 12px;
+    }
+
+    .card-content small {
+        font-size: 10px;
+    }
+
+    .card-arrow {
+        right: 8px;
+        bottom: 8px;
+    }
+
+}

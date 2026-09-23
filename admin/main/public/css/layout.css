@@ -1,0 +1,118 @@
+/* =========================
+   Global
+========================= */
+
+* {
+    box-sizing: border-box;
+}
+
+html,
+body {
+    margin: 0;
+    padding: 0;
+    min-height: 100%;
+}
+
+body {
+    background: #f5f7fb;
+}
+
+
+/* =========================
+   Sidebar
+========================= */
+
+#sidebar {
+
+    position: fixed;
+
+    top: 0;
+    left: 0;
+
+    width: 250px;
+    height: 100vh;
+
+    background: #ffffff;
+
+    z-index: 1050;
+
+    overflow-y: auto;
+
+    transition: transform 0.3s ease;
+}
+
+
+/* =========================
+   Main
+========================= */
+
+.main {
+
+    margin-left: 250px;
+
+    min-height: 100vh;
+
+    transition: margin-left 0.3s ease;
+}
+
+
+/* =========================
+   Content
+========================= */
+
+#content {
+
+    width: 100%;
+
+    min-height: calc(100vh - 70px);
+}
+
+
+
+
+/* =========================
+   Mobile
+========================= */
+
+@media (max-width: 767.98px) {
+
+    /* Sidebar */
+
+    #sidebar {
+
+        width: 260px;
+
+        transform: translateX(-100%);
+
+    }
+
+
+    /* Sidebar Open */
+
+    #sidebar.show {
+
+        transform: translateX(0);
+
+    }
+
+
+    /* Main */
+
+    .main {
+
+        margin-left: 0;
+
+        width: 100%;
+
+    }
+
+
+    /* Content */
+
+    #content {
+
+        min-height: calc(100vh - 60px);
+
+    }
+
+}

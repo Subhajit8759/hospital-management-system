@@ -1,0 +1,328 @@
+/* =========================================
+   USERS PAGE
+========================================= */
+
+.users-page {
+    padding: 0 15px 25px;
+}
+
+
+/* =========================================
+   USERS CARD
+========================================= */
+
+.users-card {
+    border-radius: 12px;
+    overflow: hidden;
+    background: #fff;
+}
+
+
+/* =========================================
+   HEADER
+========================================= */
+
+.users-header {
+    min-height: 75px;
+    padding: 16px 20px;
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    border-bottom: 1px solid #e9ecef;
+}
+
+
+.users-title {
+    font-size: 21px;
+    font-weight: 600;
+    color: #212529;
+}
+
+
+.users-title i {
+    color: #0d6efd;
+}
+
+
+/* Add User Button */
+
+#addUserBtn {
+    padding: 9px 16px;
+    font-weight: 500;
+    border-radius: 7px;
+}
+
+
+/* =========================================
+   CARD BODY
+========================================= */
+
+.users-body {
+    padding: 20px;
+}
+
+
+/* =========================================
+   TABLE
+========================================= */
+
+.users-table-wrapper {
+    width: 100%;
+    overflow-x: auto;
+}
+
+
+.users-table {
+    width: 100%;
+    min-width: 900px;
+    margin-bottom: 0 !important;
+}
+
+
+/* Table Header */
+
+.users-table thead th {
+    padding: 13px 12px;
+    font-size: 13px;
+    font-weight: 600;
+    white-space: nowrap;
+    vertical-align: middle;
+}
+
+
+/* Table Body */
+
+.users-table tbody td {
+    padding: 12px;
+    font-size: 14px;
+    vertical-align: middle;
+}
+
+
+/* User Name */
+
+.user-name-cell {
+    font-weight: 600;
+    color: #212529;
+}
+
+
+/* Email */
+
+.users-table td:nth-child(4) {
+    white-space: nowrap;
+}
+
+
+/* Mobile Number */
+
+.users-table td:nth-child(5) {
+    white-space: nowrap;
+}
+
+
+/* =========================================
+   BADGES
+========================================= */
+
+.users-table .badge {
+    padding: 6px 10px;
+    font-size: 11px;
+    font-weight: 500;
+    border-radius: 20px;
+}
+
+
+.status-badge {
+    min-width: 65px;
+    display: inline-block;
+    text-align: center;
+}
+
+
+/* =========================================
+   ACTION BUTTONS
+========================================= */
+
+.user-actions {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    white-space: nowrap;
+}
+
+
+.user-actions .btn {
+    width: 32px;
+    height: 32px;
+
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+
+    padding: 0;
+    border-radius: 6px;
+}
+
+
+.user-actions .btn i {
+    font-size: 14px;
+}
+
+
+/* =========================================
+   NO USERS
+========================================= */
+
+.no-users {
+    min-height: 250px;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    color: #6c757d;
+}
+
+
+.no-users i {
+    font-size: 45px;
+    margin-bottom: 10px;
+}
+
+
+.no-users p {
+    margin: 0;
+    font-size: 15px;
+}
+
+
+/* =========================================
+   TABLET
+========================================= */
+
+@media (max-width: 991.98px) {
+
+    .users-page {
+        padding: 0 10px 20px;
+    }
+
+    .users-body {
+        padding: 15px;
+    }
+
+    .users-header {
+        padding: 15px;
+    }
+
+    .users-title {
+        font-size: 19px;
+    }
+
+}
+
+
+/* =========================================
+   MOBILE
+========================================= */
+
+@media (max-width: 767.98px) {
+
+    .users-page {
+        padding: 0 8px 15px;
+    }
+
+
+    /* Header */
+
+    .users-header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 15px;
+    }
+
+
+    .users-header > div {
+        width: 100%;
+    }
+
+
+    #addUserBtn {
+        width: 100%;
+    }
+
+
+    /* Body */
+
+    .users-body {
+        padding: 10px;
+    }
+
+
+    /* Table */
+
+    .users-table-wrapper {
+        border: 1px solid #dee2e6;
+        border-radius: 8px;
+    }
+
+
+    .users-table {
+        min-width: 900px;
+    }
+
+
+    .users-table thead th,
+    .users-table tbody td {
+        padding: 10px;
+    }
+
+}
+
+
+/* =========================================
+   SMALL MOBILE
+========================================= */
+
+@media (max-width: 575.98px) {
+
+    .users-page {
+        margin-top: 10px !important;
+        padding: 0 5px 10px;
+    }
+
+
+    .users-card {
+        border-radius: 8px;
+    }
+
+
+    .users-header {
+        padding: 13px;
+    }
+
+
+    .users-title {
+        font-size: 18px;
+    }
+
+
+    .users-header small {
+        font-size: 12px;
+    }
+
+
+    #addUserBtn {
+        font-size: 14px;
+        padding: 8px 12px;
+    }
+
+
+    .users-body {
+        padding: 8px;
+    }
+
+}

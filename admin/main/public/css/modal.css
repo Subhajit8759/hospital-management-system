@@ -1,0 +1,142 @@
+.success-check-wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.success-check {
+    width: 80px;
+    height: 80px;
+}
+
+.success-circle {
+    stroke: #198754;
+    stroke-width: 3;
+    stroke-dasharray: 150;
+    stroke-dashoffset: 150;
+    animation: circle-draw 0.6s ease-out forwards;
+}
+
+.success-checkmark {
+    stroke: #198754;
+    stroke-width: 4;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+
+    stroke-dasharray: 40;
+    stroke-dashoffset: 40;
+
+    animation: check-draw 0.4s ease-out 0.5s forwards;
+}
+
+
+@keyframes circle-draw {
+    to {
+        stroke-dashoffset: 0;
+    }
+}
+
+@keyframes check-draw {
+    to {
+        stroke-dashoffset: 0;
+    }
+}
+
+.message-icon {
+    width: 80px;
+    height: 80px;
+    display: inline-block;
+}
+
+
+/* =========================
+   SUCCESS
+========================= */
+
+.success-circle {
+    fill: none;
+    stroke: #198754;
+    stroke-width: 3;
+
+    stroke-dasharray: 150;
+    stroke-dashoffset: 150;
+
+    animation: circle-draw 0.6s ease-out forwards;
+}
+
+.success-checkmark {
+    fill: none;
+    stroke: #198754;
+    stroke-width: 4;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+
+    stroke-dasharray: 40;
+    stroke-dashoffset: 40;
+
+    animation: check-draw 0.4s ease-out 0.6s forwards;
+}
+
+
+@keyframes circle-draw {
+
+    to {
+        stroke-dashoffset: 0;
+    }
+
+}
+
+
+@keyframes check-draw {
+
+    to {
+        stroke-dashoffset: 0;
+    }
+
+}
+
+
+/* =========================
+   ERROR
+========================= */
+
+.error-circle {
+    fill: none;
+    stroke: #dc3545;
+    stroke-width: 3;
+
+    stroke-dasharray: 150;
+    stroke-dashoffset: 150;
+
+    animation: circle-draw-error 0.6s ease-out forwards;
+}
+
+.error-cross {
+    fill: none;
+    stroke: #dc3545;
+    stroke-width: 4;
+    stroke-linecap: round;
+
+    stroke-dasharray: 50;
+    stroke-dashoffset: 50;
+
+    animation: cross-draw 0.4s ease-out 0.6s forwards;
+}
+
+
+@keyframes circle-draw-error {
+
+    to {
+        stroke-dashoffset: 0;
+    }
+
+}
+
+
+@keyframes cross-draw {
+
+    to {
+        stroke-dashoffset: 0;
+    }
+
+}

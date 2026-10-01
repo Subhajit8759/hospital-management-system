@@ -1,7 +1,12 @@
+<?php
+include "../configs/config.php";
+?>
+
 <div class="container-fluid">
 
     <!-- Page Header -->
     <div class="d-flex justify-content-between align-items-center mb-3">
+
         <div>
             <h5 class="mb-1">Patient Registration</h5>
             <small class="text-muted">Register a new patient</small>
@@ -10,13 +15,16 @@
         <button type="button" class="btn btn-secondary btn-sm back-to-patients">
             <i class="bi bi-arrow-left"></i> Back
         </button>
+
     </div>
 
 
     <!-- Patient Registration Form -->
     <form id="createPatientForm">
 
-        <!-- Patient Information -->
+        <!-- =========================
+             PATIENT INFORMATION
+        ========================== -->
         <div class="card shadow-sm mb-3">
 
             <div class="card-header bg-white">
@@ -31,18 +39,33 @@
                 <div class="row g-3">
 
                     <!-- UHID -->
-                    <div class="col-md-4">
-                        <label class="form-label">
-                            UHID
-                        </label>
+                    <div class="col-md-3">
+                        <label class="form-label">UHID</label>
 
                         <input type="text" class="form-control" id="uhid" name="uhid" placeholder="Auto Generated"
                             readonly>
                     </div>
 
 
+                    <!-- Title -->
+                    <div class="col-md-3">
+                        <label class="form-label">Title <span class="text-danger">*</span></label>
+
+                        <select class="form-select" id="title" name="title">
+
+                            <option value="" selected disabled>Select Title</option>
+                            <option value="Mr">Mr</option>
+                            <option value="Mrs">Mrs</option>
+                            <option value="Ms">Ms</option>
+                            <!-- <option value="Master">Master</option> -->
+                            <option value="Baby Of">Baby Of</option>
+
+                        </select>
+                    </div>
+
+
                     <!-- First Name -->
-                    <div class="col-md-4">
+                    <div class="col-md-3">
                         <label class="form-label">
                             First Name <span class="text-danger">*</span>
                         </label>
@@ -53,7 +76,7 @@
 
 
                     <!-- Middle Name -->
-                    <div class="col-md-4">
+                    <div class="col-md-3">
                         <label class="form-label">
                             Middle Name
                         </label>
@@ -64,7 +87,7 @@
 
 
                     <!-- Last Name -->
-                    <div class="col-md-4">
+                    <div class="col-md-3">
                         <label class="form-label">
                             Last Name
                         </label>
@@ -74,10 +97,20 @@
                     </div>
 
 
-                    <!-- DOB -->
-                    <div class="col-md-4">
+                    <!-- Date of Birth -->
+                    <div class="col-md-3">
                         <label class="form-label">
-                            Date of Birth
+                            Date of Birth <span class="text-danger">*</span>
+
+                            <strong class="text-danger d-none" id="full_age">
+
+                                (
+                                <span id="age_year">0</span> Years,
+                                <span id="age_month">0</span> Months,
+                                <span id="age_day">0</span> Days
+                                )
+
+                            </strong>
                         </label>
 
                         <input type="date" class="form-control" id="patient_dob" name="dob" min="1947-01-01"
@@ -85,39 +118,41 @@
                     </div>
 
 
-                    <!-- Age -->
-                    <div class="col-md-4">
-                        <label class="form-label">
-                            Age
-                        </label>
-
-                        <p class="text-danger text form-control">
-                            <span id="age_year">0</span> Years,
-                            <span id="age_month">0</span> Months,
-                            <span id="age_day">0</span> Days
-                        </p>
-                    </div>
-
-
                     <!-- Gender -->
-                    <div class="col-md-4">
+                    <div class="col-md-3">
                         <label class="form-label">
                             Gender <span class="text-danger">*</span>
                         </label>
 
-                        <select class="form-select" id="gender_id" name="gender_id">
+                        <select class="form-select" id="gender_id" name="gender">
 
-                            <option value="">Select Gender</option>
-                            <option value="1">Male</option>
-                            <option value="2">Female</option>
-                            <option value="3">Other</option>
+                            <option value="select" selected disabled>Select Gender</option>
+
+                            <?php
+                            $sql_gender = "SELECT * FROM gender";
+
+                            $result_gender = mysqli_query($connection, $sql_gender);
+
+                            if (mysqli_num_rows($result_gender) > 0) {
+
+                                while ($row_gender = mysqli_fetch_assoc($result_gender)) {
+
+                            ?>
+                                    <option value="<?= $row_gender['gender_id'] ?>"><?= $row_gender['gender_name']; ?></option>
+
+                            <?php
+
+                                }
+                            }
+                            ?>
+
 
                         </select>
                     </div>
 
 
                     <!-- Blood Group -->
-                    <div class="col-md-4">
+                    <div class="col-md-3">
                         <label class="form-label">
                             Blood Group
                         </label>
@@ -125,28 +160,42 @@
                         <select class="form-select" id="blood_group" name="blood_group">
 
                             <option value="">Select Blood Group</option>
-                            <option value="A+">A+</option>
-                            <option value="A-">A-</option>
-                            <option value="B+">B+</option>
-                            <option value="B-">B-</option>
-                            <option value="AB+">AB+</option>
-                            <option value="AB-">AB-</option>
-                            <option value="O+">O+</option>
-                            <option value="O-">O-</option>
+
+                            <?php
+
+                            $sql_blood_group = "SELECT * FROM blood_group";
+
+                            $result_blood_group = mysqli_query($connection, $sql_blood_group);
+
+                            if (mysqli_num_rows($result_blood_group) > 0) {
+
+                                while ($row_blood_group = mysqli_fetch_assoc($result_blood_group)) {
+
+
+                            ?>
+
+                                    <option value="<?php echo $row_blood_group['blood_group_id']; ?>">
+                                        <?php echo $row_blood_group['blood_group_name']; ?></option>
+
+                            <?php
+                                }
+                            }
+                            ?>
+
 
                         </select>
                     </div>
 
 
                     <!-- Marital Status -->
-                    <div class="col-md-4">
+                    <div class="col-md-3">
                         <label class="form-label">
-                            Marital Status
+                            Marital Status <span class="text-danger">*</span>
                         </label>
 
                         <select class="form-select" id="marital_status" name="marital_status">
 
-                            <option value="">Select Status</option>
+                            <option value="select">Select Status</option>
                             <option value="single">Single</option>
                             <option value="married">Married</option>
                             <option value="divorced">Divorced</option>
@@ -157,7 +206,7 @@
 
 
                     <!-- Nationality -->
-                    <div class="col-md-4">
+                    <div class="col-md-3">
                         <label class="form-label">
                             Nationality
                         </label>
@@ -165,19 +214,32 @@
                         <input type="text" class="form-control" id="nationality" name="nationality" value="Indian">
                     </div>
 
+
+                    <!-- Preferred Language -->
+                    <div class="col-md-3">
+                        <label class="form-label">
+                            Preferred Language
+                        </label>
+
+                        <input type="text" class="form-control" id="preferred_language" name="preferred_language"
+                            placeholder="Enter language">
+                    </div>
+
                 </div>
 
             </div>
         </div>
 
 
-        <!-- Contact Information -->
+        <!-- =========================
+             CONTACT & ADDRESS
+        ========================== -->
         <div class="card shadow-sm mb-3">
 
             <div class="card-header bg-white">
                 <h6 class="mb-0">
                     <i class="bi bi-telephone me-2"></i>
-                    Contact Information
+                    Contact & Address
                 </h6>
             </div>
 
@@ -185,86 +247,125 @@
 
                 <div class="row g-3">
 
-                    <!-- Mobile -->
-                    <div class="col-md-4">
+                    <!-- Patient Phone -->
+                    <div class="col-md-3">
                         <label class="form-label">
                             Mobile Number <span class="text-danger">*</span>
                         </label>
 
-                        <input type="tel" class="form-control" id="mobile" name="mobile"
+                        <input type="tel" class="form-control" id="patient_phone" name="patient_phone" maxlength="15"
                             placeholder="Enter mobile number">
                     </div>
 
 
-                    <!-- Alternate Mobile -->
-                    <div class="col-md-4">
+                    <!-- Address Line 1 -->
+                    <div class="col-md-6">
                         <label class="form-label">
-                            Alternate Mobile
+                            Full Address <span class="text-danger">*</span>
                         </label>
 
-                        <input type="tel" class="form-control" id="alternate_mobile" name="alternate_mobile"
-                            placeholder="Enter alternate number">
-                    </div>
-
-
-                    <!-- Email -->
-                    <div class="col-md-4">
-                        <label class="form-label">
-                            Email
-                        </label>
-
-                        <input type="email" class="form-control" id="email" name="email" placeholder="Enter email">
-                    </div>
-
-
-                    <!-- Address -->
-                    <div class="col-md-12">
-                        <label class="form-label">
-                            Address <span class="text-danger">*</span>
-                        </label>
-
-                        <textarea class="form-control" id="address" name="address" rows="2"
-                            placeholder="Enter full address"></textarea>
-                    </div>
-
-
-                    <!-- City -->
-                    <div class="col-md-3">
-                        <label class="form-label">
-                            City / Village
-                        </label>
-
-                        <input type="text" class="form-control" name="city">
-                    </div>
-
-
-                    <!-- District -->
-                    <div class="col-md-3">
-                        <label class="form-label">
-                            District
-                        </label>
-
-                        <input type="text" class="form-control" name="district">
+                        <input type="text" class="form-control" id="full_address" name="full_address"
+                            placeholder="House No., Street, etc.">
                     </div>
 
 
                     <!-- State -->
                     <div class="col-md-3">
+
                         <label class="form-label">
                             State
                         </label>
 
-                        <input type="text" class="form-control" name="state" value="West Bengal">
+                        <select name="state" id="state" class="form-select state">
+
+                            <option value="" selected disabled>
+                                Select State <span class="text-danger">*</span>
+                            </option>
+
+                            <?php
+
+                            $sql_state = "SELECT * FROM states";
+
+                            $result_state = mysqli_query(
+                                $connection,
+                                $sql_state
+                            );
+
+                            if (mysqli_num_rows($result_state) > 0) {
+
+                                while ($row_state = mysqli_fetch_assoc($result_state)) {
+
+                            ?>
+
+                                    <option value="<?= $row_state['sid']; ?>">
+                                        <?= $row_state['state_name']; ?>
+                                    </option>
+
+                            <?php
+
+                                }
+                            }
+
+                            ?>
+
+                        </select>
+
                     </div>
 
 
-                    <!-- PIN -->
-                    <div class="col-md-3">
+                    <!-- District -->
+                    <div class="col-md-3 d-none" id="district_row">
+
                         <label class="form-label">
-                            PIN Code
+                            District <span class="text-danger">*</span>
                         </label>
 
-                        <input type="text" class="form-control" name="pincode" maxlength="6">
+                        <select name="district" id="district" class="form-select">
+
+                            <option value="">
+                                Select District
+                            </option>
+
+                        </select>
+
+                    </div>
+
+
+                    <!-- Village / Town / City -->
+                    <div class="col-md-3">
+
+                        <label class="form-label">
+                            Village / Town / City <span class="text-danger">*</span>
+                        </label>
+
+                        <input type="text" class="form-control" id="village_town_city" name="village_town_city"
+                            placeholder="Enter village / town / city">
+
+                    </div>
+
+
+                    <!-- PIN Code -->
+                    <div class="col-md-3">
+
+                        <label class="form-label">
+                            PIN Code <span class="text-danger">*</span>
+                        </label>
+
+                        <input type="text" class="form-control" id="pincode" name="pincode" maxlength="6"
+                            placeholder="Enter PIN code">
+
+                    </div>
+
+
+                    <!-- Country -->
+                    <div class="col-md-3">
+
+                        <label class="form-label">
+                            Country
+                        </label>
+
+                        <input type="text" class="form-control" id="country" name="country" value="India">
+
                     </div>
 
                 </div>
@@ -273,7 +374,9 @@
         </div>
 
 
-        <!-- Family Information -->
+        <!-- =========================
+             FAMILY INFORMATION
+        ========================== -->
         <div class="card shadow-sm mb-3">
 
             <div class="card-header bg-white">
@@ -288,42 +391,38 @@
                 <div class="row g-3">
 
                     <!-- Father -->
-                    <div class="col-md-4">
+                    <div class="col-md-3">
+
                         <label class="form-label">
                             Father's Name
                         </label>
 
                         <input type="text" class="form-control" name="father_name" placeholder="Enter father's name">
+
                     </div>
 
 
                     <!-- Mother -->
-                    <div class="col-md-4">
+                    <div class="col-md-3">
+
                         <label class="form-label">
                             Mother's Name
                         </label>
 
                         <input type="text" class="form-control" name="mother_name" placeholder="Enter mother's name">
+
                     </div>
 
 
                     <!-- Spouse -->
-                    <div class="col-md-4">
+                    <div class="col-md-3">
+
                         <label class="form-label">
                             Spouse Name
                         </label>
 
                         <input type="text" class="form-control" name="spouse_name" placeholder="Enter spouse name">
-                    </div>
 
-
-                    <!-- Occupation -->
-                    <div class="col-md-4">
-                        <label class="form-label">
-                            Occupation
-                        </label>
-
-                        <input type="text" class="form-control" name="occupation" placeholder="Enter occupation">
                     </div>
 
                 </div>
@@ -332,66 +431,82 @@
         </div>
 
 
-        <!-- Identification -->
+        <!-- =========================
+             EMERGENCY CONTACT
+        ========================== -->
         <div class="card shadow-sm mb-3">
 
             <div class="card-header bg-white">
+
                 <h6 class="mb-0">
-                    <i class="bi bi-card-text me-2"></i>
-                    Identification
+                    <i class="bi bi-person-exclamation me-2"></i>
+                    Emergency Contact
                 </h6>
+
             </div>
 
             <div class="card-body">
 
                 <div class="row g-3">
 
-                    <!-- ID Type -->
-                    <div class="col-md-4">
+                    <!-- Contact Name -->
+                    <div class="col-md-3">
+
                         <label class="form-label">
-                            ID Proof Type
+                            Contact Name <span class="text-danger">*</span>
                         </label>
 
-                        <select class="form-select" name="id_proof_type">
+                        <input type="text" class="form-control" id="contact_name" name="contact_name"
+                            placeholder="Enter contact name">
 
-                            <option value="">Select ID Proof</option>
-                            <option value="aadhaar">Aadhaar</option>
-                            <option value="passport">Passport</option>
-                            <option value="voter">Voter ID</option>
-                            <option value="driving_license">Driving License</option>
-
-                        </select>
                     </div>
 
 
-                    <!-- ID Number -->
-                    <div class="col-md-4">
+                    <!-- Relationship -->
+                    <div class="col-md-3">
+
                         <label class="form-label">
-                            ID Proof Number
+                            Relationship <span class="text-danger">*</span>
                         </label>
 
-                        <input type="text" class="form-control" name="id_proof_number" placeholder="Enter ID number">
+                       <select name="relationship" id="relationship" class="form-control">
+                            <option value="father">Father</option>
+                            <option value="mother">Mother</option>
+                            <option value="brother">Brother</option>
+                            <option value="sister">Sister</option>
+                            <option value="spouse">Spouse</option>
+                            <option value="son">Son</option>
+                            <option value="daughter">Daughter</option>
+                            <option value="others">Others</option>
+                       </select>
+
                     </div>
 
 
-                    <!-- ABHA -->
-                    <div class="col-md-4">
+                    <!-- Mobile -->
+                    <div class="col-md-3">
+
                         <label class="form-label">
-                            ABHA ID
+                            Mobile <span class="text-danger">*</span>
                         </label>
 
-                        <input type="text" class="form-control" name="abha_id" placeholder="Enter ABHA ID">
+                        <input type="tel" class="form-control" id="emergency_mobile" name="emergency_mobile"
+                            maxlength="15" placeholder="Enter mobile number">
+
                     </div>
 
 
-                    <!-- Photo -->
-                    <!-- <div class="col-md-4">
+                    <!-- Emergency Address -->
+                    <div class="col-md-12">
+
                         <label class="form-label">
-                            Patient Photo
+                            Address <span class="text-danger">*</span>
                         </label>
 
-                        <input type="file" class="form-control" id="photo" name="photo" accept=".jpg,.jpeg,.png">
-                    </div> -->
+                        <textarea class="form-control" id="emergency_address" name="emergency_address" rows="2"
+                            placeholder="Enter emergency contact address"></textarea>
+
+                    </div>
 
                 </div>
 
@@ -399,19 +514,26 @@
         </div>
 
 
-        <!-- Form Buttons -->
+        <!-- =========================
+             FORM BUTTONS
+        ========================== -->
         <div class="card shadow-sm">
 
             <div class="card-body d-flex justify-content-end gap-2">
 
                 <button type="reset" class="btn btn-light border">
+
                     <i class="bi bi-arrow-counterclockwise"></i>
                     Reset
+
                 </button>
 
+
                 <button type="submit" class="btn btn-primary">
+
                     <i class="bi bi-person-plus"></i>
                     Save Patient
+
                 </button>
 
             </div>

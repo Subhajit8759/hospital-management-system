@@ -4,9 +4,9 @@ $(document).on("submit", "#createPatientForm", function (event) {
 
   const formData = new FormData(this);
 
-  formData.forEach((key, value) => {
-    console.log(`${value} : ${key}`);
-  });
+  // formData.forEach((key, value) => {
+  //   console.log(`${value} : ${key}`);
+  // });
 
   $.ajax({
     url: "patients/save-patient.php",
@@ -88,3 +88,18 @@ $(document).on("change", "#patient_dob", function (event) {
   $("#age_month").text(months);
   $("#age_day").text(days);
 });
+
+
+// village show after change distrcit
+$(document).on('change', "#district", function (event) {
+    event.preventDefault();
+
+    $("#city").removeClass("d-none");
+});
+
+// date change to view date
+$(document).on('change', "#patient_dob", function (event) {
+  event.preventDefault();
+
+  $("#full_age").removeClass("d-none")
+})

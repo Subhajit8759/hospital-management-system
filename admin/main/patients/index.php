@@ -159,22 +159,69 @@
 
                     </thead>
 
+                    <?php
 
-                    <tbody id="patients-table-body">
+                    include "../configs/config.php";
 
-                        <!-- Patient rows will load here -->
+                    $sql = "SELECT * FROM patients
+                                    LEFT JOIN emergency_contact ON patients.patient_id = emergency_contact.patient_id
+                                    LEFT JOIN gender ON patients.gender = gender.gender_id
+                                    LEFT JOIN blood_group ON patients.blood_group = blood_group.blood_group_id
+                                    ORDER BY patients.patient_id DESC";
 
-                        <tr>
+                    $result = mysqli_query($connection, $sql) or die();
 
-                            <td colspan="9" class="text-center text-muted py-4">
+                    if (mysqli_num_rows($result) > 0) {
+                        $sl = 1;
 
-                                No patients found.
+                    ?>
 
-                            </td>
+                        <tbody id="patients-table-body">
+                            <?php
 
-                        </tr>
+                            while ($row = mysqli_fetch_assoc($result)) {
 
-                    </tbody>
+                            ?>
+                                <!-- Patient rows will load here -->
+
+                                <tr>
+
+                                    <td><?= $sl++; ?></td>
+                                    <td><?= $row['uhid']; ?></td>
+                                    <td><?= $row['first_name'] . " " . $row['middle_name'] . " " . $row['last_name'] ; ?></td>
+                                    <td><?= $row['gender_name']; ?></td>
+                                    <td>
+                                        <?php
+                                            $dob = $row['dob'];
+                                            $date_of_birth = new DateTime($dob);
+                                            echo $date_of_birth->format("d-m-Y");
+                                        ?>
+                                    </td>
+                                    <td>
+                                        <?php echo ($row['blood_group']) ? $row['blood_group_name'] : "Unknown"; ?>
+                                    </td>
+                                    <td><?= $row['patient_phone']; ?></td>
+                                    <td>
+                                        <?php
+                                            $patient_created_at = $row['patient_created_at'];
+                                            $patient_created_date = new DateTime($patient_created_at);
+                                            echo $patient_created_date->format("d-m-Y i:m:s");
+                                        ?>
+                                    </td>
+                                    <td>
+                                        <a href="" class="btn btn-sm btn-primary">View</a>
+                                        <a href="" class="btn btn-sm btn-success">Edit</a>
+                                        <a href="" class="btn btn-sm btn-danger">Delete</a>
+                                    </td>
+                                </tr>
+
+                        <?php
+                            }
+                        }
+
+                        ?>
+
+                        </tbody>
 
                 </table>
 

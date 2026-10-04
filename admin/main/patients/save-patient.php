@@ -293,12 +293,20 @@ $sql_insert_patient = "INSERT INTO patients (
                         father_name, mother_name, spouse_name, patient_phone, address, village_town_city,
                         district, state, country, pincode, nationality, preferred_language, blood_group
 )
-                        VALUES ('$title', '$first_name', '{$middle_name}', '$last_name', '$dob', 
-                        {$gender}, '{$marital_status}', '{$father_name}', '{$mother_name}', '{$spouse_name}',
-                         '{$patient_phone}', '{$address}', '{$village_town_city}', '{$district}', '{$state}', '{$country}', '{$pincode}',
-                         '{$nationality}', '{$preferred_language}', {$blood_group})";
 
-$result_insert_patient = mysqli_query($connection, $sql_insert_patient);
+VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+
+$stmt = mysqli_prepare($connection, $sql_insert_patient);
+
+mysqli_stmt_bind_param(
+    $stmt,
+    "sssssisssssssisssssi",
+    $title, $first_name, $middle_name, $last_name, $dob, $gender, $marital_status,
+    $father_name, $mother_name, $spouse_name, $patient_phone, $address, $village_town_city,
+    $district, $state, $country, $pincode, $nationality, $preferred_language, $blood_group
+);
+
+$result_insert_patient = mysqli_stmt_execute($stmt);
 
 // Updating UHID
 
@@ -309,16 +317,24 @@ if ($result_insert_patient) {
     $uhid = "HMS" . str_pad($patient_id, 6, "0", STR_PAD_LEFT);
 
     $update_uhid_sql = "UPDATE patients
-                        SET uhid = '{$uhid}'
-                        WHERE patient_id = {$patient_id}";
+                        SET uhid = ?
+                        WHERE patient_id = ?";
 
-    $result_uhid = mysqli_query($connection, $update_uhid_sql);
+    $stmt_uhid = mysqli_prepare($connection, $update_uhid_sql);
+
+    mysqli_stmt_bind_param($stmt_uhid, "si", $uhid, $patient_id);
+
+    $result_uhid = mysqli_stmt_execute($stmt_uhid);
 
     // INSERTING EMERGENCY CONTACT
     $sql_emergency_contact = "INSERT INTO emergency_contact(patient_id, contact_name, relationship, mobile, emergency_address)
-                            VALUES ({$patient_id}, '{$contact_name}', '{$relationship}', '{$emergency_mobile}', '{$emergency_address}' )";
+                            VALUES ( ?, ?, ?, ?, ? )";
 
-    $result_emergency_contact = mysqli_query($connection, $sql_emergency_contact);
+    $stmt_emergency_contact = mysqli_prepare($connection, $sql_emergency_contact);
+
+    mysqli_stmt_bind_param($stmt_emergency_contact, "issss", $patient_id, $contact_name, $relationship, $emergency_mobile, $emergency_address);
+
+    $result_emergency_contact = mysqli_stmt_execute($stmt_emergency_contact);
 
 }
 

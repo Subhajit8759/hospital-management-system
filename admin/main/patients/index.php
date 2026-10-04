@@ -209,7 +209,7 @@
                                         ?>
                                     </td>
                                     <td>
-                                        <a href="" class="btn btn-sm btn-primary">View</a>
+                                        <a href="#" data-id="<?= $row['patient_id']; ?>"  class="btn btn-sm btn-primary view-patient">View</a>
                                         <a href="" class="btn btn-sm btn-success">Edit</a>
                                         <a href="" class="btn btn-sm btn-danger">Delete</a>
                                     </td>

@@ -210,8 +210,8 @@
                                     </td>
                                     <td>
                                         <a href="#" data-id="<?= $row['patient_id']; ?>"  class="btn btn-sm btn-primary view-patient">View</a>
-                                        <a href="" class="btn btn-sm btn-success">Edit</a>
-                                        <a href="" class="btn btn-sm btn-danger">Delete</a>
+                                        <a href="" class="btn btn-sm btn-success edit-patient" data-id="<?= $row['patient_id']; ?>">Edit</a>
+                                        <a href="" class="btn btn-sm btn-danger delete-patient" data-id="<?= $row['patient_id']; ?>">Delete</a>
                                     </td>
                                 </tr>
 

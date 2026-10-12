@@ -15,81 +15,29 @@
 
     </div>
 
+    <?php
 
-    <!-- Search & Filter -->
-    <div class="card shadow-sm mb-3">
+    include "../configs/config.php";
 
-        <div class="card-body">
+    $limit = 10;
 
-            <div class="row g-2">
+    $page = (isset($_POST['page'])) ? $_POST['page'] : 1;
 
-                <!-- Search -->
-                <div class="col-md-5">
-                    <div class="input-group">
+    $offset = ($page - 1) * $limit;
 
-                        <span class="input-group-text">
-                            <i class="bi bi-search"></i>
-                        </span>
+    $sql_total_records = "SELECT COUNT(*) AS total_count FROM patients";
 
-                        <input type="text" class="form-control" id="patient-search"
-                            placeholder="Search by UHID, name or mobile...">
+    $result_total_records = mysqli_query($connection, $sql_total_records);
 
-                    </div>
-                </div>
+    $total_records = mysqli_fetch_assoc($result_total_records);
 
+    $total_patients = $total_records['total_count'];
 
-                <!-- Gender -->
-                <div class="col-md-2">
+    $total_pages = ceil($total_patients / $limit);
 
-                    <select class="form-select" id="patient-gender">
+    $sl = $offset + 1;
 
-                        <option value="">All Gender</option>
-                        <option value="1">Male</option>
-                        <option value="2">Female</option>
-                        <option value="3">Other</option>
-
-                    </select>
-
-                </div>
-
-
-                <!-- Blood Group -->
-                <div class="col-md-2">
-
-                    <select class="form-select" id="patient-blood-group">
-
-                        <option value="">All Blood Group</option>
-                        <option value="A+">A+</option>
-                        <option value="A-">A-</option>
-                        <option value="B+">B+</option>
-                        <option value="B-">B-</option>
-                        <option value="AB+">AB+</option>
-                        <option value="AB-">AB-</option>
-                        <option value="O+">O+</option>
-                        <option value="O-">O-</option>
-
-                    </select>
-
-                </div>
-
-
-                <!-- Search Button -->
-                <div class="col-md-3">
-
-                    <button type="button" class="btn btn-primary w-100" id="search-patient">
-
-                        <i class="bi bi-search me-1"></i>
-                        Search
-
-                    </button>
-
-                </div>
-
-            </div>
-
-        </div>
-
-    </div>
+    ?>
 
 
     <!-- Patient Table -->
@@ -103,7 +51,7 @@
             </h6>
 
             <span class="badge text-bg-secondary">
-                Total: 0
+                Total: <?= $total_records['total_count']; ?>
             </span>
 
         </div>
@@ -161,18 +109,15 @@
 
                     <?php
 
-                    include "../configs/config.php";
-
                     $sql = "SELECT * FROM patients
                                     LEFT JOIN emergency_contact ON patients.patient_id = emergency_contact.patient_id
                                     LEFT JOIN gender ON patients.gender = gender.gender_id
                                     LEFT JOIN blood_group ON patients.blood_group = blood_group.blood_group_id
-                                    ORDER BY patients.patient_id DESC";
+                                    ORDER BY patients.patient_id DESC LIMIT {$limit} OFFSET {$offset}";
 
                     $result = mysqli_query($connection, $sql) or die();
 
                     if (mysqli_num_rows($result) > 0) {
-                        $sl = 1;
 
                     ?>
 
@@ -236,7 +181,7 @@
             <div class="d-flex justify-content-between align-items-center">
 
                 <small class="text-muted">
-                    Showing 0 to 0 of 0 patients
+                    Showing <?= $offset + 1; ?> to <?= ($limit + $offset > $total_patients) ? $total_patients : ($limit + $offset); ?> of <?= $total_patients ?> patients
                 </small>
 
 
@@ -244,25 +189,30 @@
 
                     <ul class="pagination pagination-sm mb-0">
 
-                        <li class="page-item disabled">
+                        <li class="page-item <?= ($page <= 1) ? "disabled" : "" ?>">
 
-                            <a class="page-link" href="#">
+                            <a class="page-link patient-pagination" href="#" data-page="<?= $page - 1 ?>">
                                 Previous
                             </a>
 
                         </li>
 
-                        <li class="page-item active">
+                        <?php
+                            for ($i = 1; $i <= $total_pages; $i++) {
+                        ?>
+                        <li class="page-item <?= ($i == $page) ? "active" : ""; ?>">
 
-                            <a class="page-link" href="#">
-                                1
+                            <a class="page-link patient-pagination" href="#" data-page="<?= $i ?>">
+                                <?= $i ?>
                             </a>
 
                         </li>
 
-                        <li class="page-item disabled">
+                        <?php } ?>
 
-                            <a class="page-link" href="#">
+                        <li class="page-item <?= ($page >= $total_pages)  ? "disabled" : "" ?>">
+
+                            <a class="page-link patient-pagination" href="#" data-page="<?= $page + 1 ?>">
                                 Next
                             </a>
 

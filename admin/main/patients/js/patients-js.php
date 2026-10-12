@@ -2,3 +2,4 @@
 <script src="patients/js/create-patient.js"></script>
 <script src="patients/js/state_district.js"></script>
 <script src="patients/js/view-patient.js"></script>
+<script src="patients/js/edit-patient.js"></script>

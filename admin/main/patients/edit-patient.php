@@ -70,6 +70,8 @@
 
                         <input type="text" class="form-control" name="uhid"
                             value="<?= htmlspecialchars($row_view['uhid']); ?>" readonly>
+
+                        <input type="hidden" class="form-control" name="patient_id" value="<?= $row_view['patient_id']; ?>">
                     </div>
 
 
@@ -83,7 +85,7 @@
 
                             <option value="">Select Title</option>
 
-                            <option value="Ms" <?= ($row_view['title'] === 'Mr') ? 'selected' : ''; ?>>
+                            <option value="Mr" <?= ($row_view['title'] === 'Mr') ? 'selected' : ''; ?>>
                                 Mr.
                             </option>
 
@@ -566,7 +568,7 @@
                 Cancel
             </a>
 
-            <button type="submit" class="btn btn-primary">
+            <button type="submit" class="btn btn-primary" id="update-patient">
                 <i class="bi bi-check-lg"></i>
                 Update Patient
             </button>
